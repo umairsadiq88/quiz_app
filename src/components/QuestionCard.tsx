@@ -1,11 +1,38 @@
-import React from 'react'
+import { type } from "os";
+import React from "react";
 
-const QuestionCard = () => {
-    return (
+type Props = {
+  question: string;
+  answers: string[];
+  callback: any;
+  userAnswer: string;
+  questionNr: number;
+  totalQuestions: number;
+};
+
+const QuestionCard: React.FC<Props> = ({
+  question,
+  answers,
+  callback,
+  userAnswer,
+  questionNr,
+  totalQuestions,
+}) => (
+  <div>
+    <p className="number">
+      Question: {questionNr} / {totalQuestions}
+    </p>
+    <p dangerouslySetInnerHTML={{ __html: question }} />
+    <div>
+      {answers.map((answer) => (
         <div>
-            <h1>Hello! from QuestionCard Component</h1>
+          <button disabled={userAnswer} onClick={callback}>
+            <span dangerouslySetInnerHTML={{ __html: answer }} />
+          </button>
         </div>
-    )
-}
+      ))}
+    </div>
+  </div>
+);
 
 export default QuestionCard;
