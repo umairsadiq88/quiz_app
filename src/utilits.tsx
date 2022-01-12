@@ -1,9 +1,4 @@
-import React from 'react'
+export const shuffleArray = (array: any[]) => 
+[...array].sort(() => Math.random() - 0.5);
 
-export const utilits = () => {
-    return (
-        <div>
-            <h1>This is Utlits</h1>
-        </div>
-    )
-}
+
